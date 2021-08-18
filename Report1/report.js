@@ -10,7 +10,7 @@ formatter.feature({
   ]
 });
 formatter.scenario({
-  "name": "@Step1 Тест",
+  "name": "Тест",
   "description": "",
   "keyword": "Сценарий",
   "tags": [
@@ -20,7 +20,7 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "test",
+  "name": "отсортировать CSV",
   "keyword": "Дано "
 });
 formatter.match({
