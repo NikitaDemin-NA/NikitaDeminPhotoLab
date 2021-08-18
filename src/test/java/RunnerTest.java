@@ -7,7 +7,7 @@ import io.cucumber.junit.Cucumber;
         plugin = {"pretty", "html:Report1"},
         features = "src/test/features",
         glue = {"steps"},
-        tags = "@TestPG"
+        tags = "@Test"
 )
 public class RunnerTest {
 }
