@@ -1,8 +1,6 @@
 package steps;
 
-import com.consol.citrus.annotations.CitrusResource;
-import com.consol.citrus.dsl.runner.TestRunner;
-import com.consol.citrus.dsl.runner.DefaultTestRunner;
+
 import com.consol.citrus.validation.json.JsonPathVariableExtractor;
 import com.jayway.jsonpath.JsonPath;
 import io.cucumber.java.Before;
@@ -12,10 +10,11 @@ import io.cucumber.java.ru.Если;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.json.JSONArray;
+import net.minidev.json.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.LoggerFactory;
@@ -35,6 +34,11 @@ public class JSONSteps {
             Object obj = jsonParser.parse(reader);
             String sobj = String.valueOf(obj);
             System.out.println(sobj);
+
+            //Find number of content
+            JSONArray jsonArray = JsonPath.read(sobj, "$.categories..content");
+            int numberContent = jsonArray.size();
+            System.out.println(numberContent);
 
             //Extract JSON values
             Object invalid = JsonPath.read(sobj, "$.categories..content");
