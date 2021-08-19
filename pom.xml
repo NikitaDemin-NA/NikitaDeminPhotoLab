@@ -55,6 +55,83 @@
             <version>5.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/net.javacrumbs.json-unit/json-unit-json-path -->
+        <dependency>
+            <groupId>net.javacrumbs.json-unit</groupId>
+            <artifactId>json-unit-json-path</artifactId>
+            <version>2.27.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.2.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>2.2.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.consol.citrus/citrus-validation-json -->
+        <dependency>
+            <groupId>com.consol.citrus</groupId>
+            <artifactId>citrus-validation-json</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.consol.citrus/citrus-core -->
+        <dependency>
+            <groupId>com.consol.citrus</groupId>
+            <artifactId>citrus-core</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.consol.citrus/citrus-validation-json -->
+        <dependency>
+            <groupId>com.consol.citrus</groupId>
+            <artifactId>citrus-validation-json</artifactId>
+            <version>3.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.consol.citrus/citrus-java-dsl -->
+        <dependency>
+            <groupId>com.consol.citrus</groupId>
+            <artifactId>citrus-java-dsl</artifactId>
+            <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.consol.citrus/citrus-cucumber -->
+        <dependency>
+            <groupId>com.consol.citrus</groupId>
+            <artifactId>citrus-cucumber</artifactId>
+            <version>2.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
+
+
 
 
     </dependencies>

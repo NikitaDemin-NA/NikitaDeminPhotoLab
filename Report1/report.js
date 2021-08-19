@@ -1,4 +1,4 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/features/FirstStep.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/main/resources/features/FirstStep.feature");
 formatter.feature({
   "name": "Тестовый feature-файл",
   "description": "",
@@ -19,14 +19,18 @@ formatter.scenario({
     }
   ]
 });
+formatter.before({
+  "error_message": "java.lang.NullPointerException: Cannot invoke \"com.consol.citrus.dsl.runner.DefaultTestRunner.getTestContext()\" because \"runner\" is null\n\tat steps.OrderedMessageStore.createOrderedMessageStore(OrderedMessageStore.java:14)\n\tat steps.JSONSteps.init(JSONSteps.java:32)\n",
+  "status": "failed"
+});
 formatter.step({
-  "name": "отсортировать CSV",
-  "keyword": "Дано "
+  "name": "добавить JSON в переменную \"bodyJSON\"",
+  "keyword": "Тогда "
 });
 formatter.match({
-  "location": "steps.CSVSteps.Test()"
+  "location": "steps.JSONSteps.addJSON(java.lang.String)"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 });

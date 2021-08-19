@@ -8,6 +8,8 @@ import io.cucumber.java.ru.Если;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,7 +18,7 @@ public class CSVSteps {
     @Если("отсортировать CSV")
     public void Test() {
         try {
-            CSVReader reader = new CSVReader(new FileReader("src/main/resources/CsvFile.csv"));
+            CSVReader reader = new CSVReader(new FileReader("src/main/resources/files/CsvFile.csv"));
             reader.iterator();
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
@@ -28,6 +30,16 @@ public class CSVSteps {
             e.printStackTrace();
         }
     }
+
+    @Если("отсортировать CSV2")
+    public void Test2() throws IOException, CsvException {
+            CSVReader reader = new CSVReader(new FileReader("src/main/resources/CsvFile.csv"));
+            List<String[]> myEntries = reader.readAll();
+            myEntries.sort(Collections.reverseOrder());
+
+            }
+
+
 }
 
 
