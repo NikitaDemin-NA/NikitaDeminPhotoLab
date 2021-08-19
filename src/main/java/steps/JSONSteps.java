@@ -4,6 +4,7 @@ import com.consol.citrus.annotations.CitrusResource;
 import com.consol.citrus.dsl.runner.TestRunner;
 import com.consol.citrus.dsl.runner.DefaultTestRunner;
 import com.consol.citrus.validation.json.JsonPathVariableExtractor;
+import com.jayway.jsonpath.JsonPath;
 import io.cucumber.java.Before;
 import io.cucumber.java.ru.Если;
 
@@ -11,27 +12,18 @@ import io.cucumber.java.ru.Если;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import org.json.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.slf4j.LoggerFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class JSONSteps {
-
-    @CitrusResource
-    TestRunner runner;
-
-    ResourceUtils resourcesUtils;
-    private SizedMessageStore messages;
-
-    @Before
-    public void init(){
-        this.resourcesUtils = new ResourceUtils(this.runner);
-        this.messages = OrderedMessageStore.createOrderedMessageStore(this.runner);
-    }
-
 
     @Если("добавить JSON в переменную \"([^\"]*)\"$")
     public void addJSON(String variable) {
@@ -44,11 +36,9 @@ public class JSONSteps {
             String sobj = String.valueOf(obj);
             System.out.println(sobj);
 
-            JsonPathVariableExtractor variableExtractor = new JsonPathVariableExtractor();
-            variableExtractor.getJsonPathExpressions().put(sobj, variable);
-
-            runner.variable(variable, sobj);
-            System.out.println(variable);
+            //Extract JSON values
+            Object invalid = JsonPath.read(sobj, "$.categories..content");
+            System.out.println(invalid);
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -72,7 +62,7 @@ public class JSONSteps {
 
             //TestContext testContext = ((DefaultTestRunner) this.runner).getTestContext();
 
-            runner.variable(variable, sobj);
+
            // Message message = new DefaultMessage();
             //message.setPayload(testContext.replaceDynamicContentInString(testContext.getVariable(sobj)));
             //variableExtractor.extractVariables(message, testContext);
@@ -92,4 +82,6 @@ public class JSONSteps {
    //     this.messages
         this.addPayloadToMessage(messageName,payload);
     }
+
+
 }
