@@ -26,12 +26,10 @@ public class JSONSteps {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
             String sobj = String.valueOf(obj);
-            System.out.println(sobj);
 
             //Find number of content
             JSONArray jsonArray = JsonPath.read(sobj, "$.categories..content");
             int numberContent = jsonArray.size();
-            System.out.println(numberContent);
 
             for(int i=0; i<numberContent; i++) {
                 //Extract JSON values
