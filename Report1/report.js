@@ -20,11 +20,21 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "извлечь JSON значения",
+  "name": "извлечь значения id из JSON файла",
   "keyword": "Дано "
 });
 formatter.match({
   "location": "steps.JSONSteps.addJSON()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "пропарсить CSV",
+  "keyword": "Тогда "
+});
+formatter.match({
+  "location": "steps.CSVSteps.Test()"
 });
 formatter.result({
   "status": "passed"

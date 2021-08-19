@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class CSVSteps {
 
-    @Если("отсортировать CSV")
+    @Если("пропарсить CSV")
     public void Test() {
         try {
             CSVReader reader = new CSVReader(new FileReader("src/main/resources/files/CsvFile.csv"));

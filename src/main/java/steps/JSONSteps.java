@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 
 public class JSONSteps {
 
-    @Если("извлечь JSON значения")
+    @Если("извлечь значения id из JSON файла")
     public void addJSON() {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
@@ -33,9 +33,11 @@ public class JSONSteps {
             int numberContent = jsonArray.size();
             System.out.println(numberContent);
 
-            //Extract JSON values
-            Object invalid = JsonPath.read(sobj, "$.categories..content");
-            System.out.println(invalid);
+            for(int i=0; i<numberContent; i++) {
+                //Extract JSON values
+                Object invalid = JsonPath.read(sobj, "$.categories[" + i + "]..content..id");
+                System.out.println(invalid);
+            }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
