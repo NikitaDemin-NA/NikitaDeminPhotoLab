@@ -20,11 +20,11 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "добавить JSON в переменную \"bodyJSON\"",
-  "keyword": "Тогда "
+  "name": "извлечь JSON значения",
+  "keyword": "Дано "
 });
 formatter.match({
-  "location": "steps.JSONSteps.addJSON(java.lang.String)"
+  "location": "steps.JSONSteps.addJSON()"
 });
 formatter.result({
   "status": "passed"
