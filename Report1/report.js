@@ -1,6 +1,6 @@
 $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/main/resources/features/FirstStep.feature");
 formatter.feature({
-  "name": "Тестовый feature-файл",
+  "name": "Проверить что содержимое групп сортировано по весу элементов от большего к меньшему",
   "description": "",
   "keyword": "Функционал",
   "tags": [
@@ -21,20 +21,20 @@ formatter.scenario({
 });
 formatter.step({
   "name": "пропарсить и отсортировать CSV",
-  "keyword": "Тогда "
+  "keyword": "Дано "
 });
 formatter.match({
-  "location": "steps.CSVSteps.CSVFile()"
+  "location": "steps.CustomSteps.CSVFile()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "извлечь значения id из JSON файла",
-  "keyword": "Дано "
+  "name": "извлечь значения из JSON файла и проверить сортировку",
+  "keyword": "Тогда "
 });
 formatter.match({
-  "location": "steps.CSVSteps.addJSON()"
+  "location": "steps.CustomSteps.addJSON()"
 });
 formatter.result({
   "status": "passed"
