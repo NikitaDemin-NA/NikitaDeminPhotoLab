@@ -15,7 +15,8 @@ public class CSVSteps {
             CSVFile csv = new CSVFile(filePath);
             csv.setSortDirection(csv.SortDESC);
             csv.sortByCol(0);
-            csv.print();
+            csv.save();
+
 
         } catch (IOException fileNotFoundException) {
             fileNotFoundException.printStackTrace();

@@ -12,12 +12,14 @@ class CSVFile {
     final public int SortDESC = -1;
     private int sortDirection = SortASC; //1 for ASC, -1 for DESC
     String fileName;
+    String newFileName;
 
     private int colsCount;
 
     public CSVFile(String fileName) throws IOException{
         records = new ArrayList<>();
         this.fileName = "src/main/resources/files/CsvFile.csv";
+        this.newFileName = "src/main/resources/files/newCsvFile.csv";
         try(BufferedReader in = new BufferedReader(new FileReader(this.fileName)))
         {
             String ln;
@@ -38,11 +40,11 @@ class CSVFile {
     }
 
     public void save() throws IOException{
-        try(BufferedWriter out = new BufferedWriter(new FileWriter(fileName)))
+        try(BufferedWriter out = new BufferedWriter(new FileWriter(newFileName)))
         {
             for(String[] arr : records){
-                for (String s:arr) {
-                    out.write(s+"\t");
+                for (String s :arr) {
+                    out.write(s+"", 0,7);
                 }
                 out.write("\n");
             }
