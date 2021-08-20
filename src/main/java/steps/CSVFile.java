@@ -1,13 +1,17 @@
 package steps;
 
-import com.opencsv.CSVReader;
+import com.jayway.jsonpath.JsonPath;
+import io.cucumber.java.ru.Если;
+import net.minidev.json.JSONArray;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.util.*;
 
 class CSVFile {
 
-    private List<String[]> records;
+    private Map<String, String> records;
 
     //constants for sortDirection
     final public int SortASC = 1;
@@ -16,63 +20,57 @@ class CSVFile {
     String fileName;
     String newFileName;
 
+    List<String> listID;
+
+
     private int colsCount;
 
-    public CSVFile(String fileName) throws IOException{
-        records = new ArrayList<>();
+  /*  @Если("пропарсить и отсортировать CSV")
+    public void CSVFile(String fileName) throws IOException {
+        //Parsing CSV to Map
+        records = new HashMap<>();
         this.fileName = "src/main/resources/files/CsvFile.csv";
         this.newFileName = "src/main/resources/files/newCsvFile.csv";
-        try(BufferedReader in = new BufferedReader(new FileReader(this.fileName)))
-        {
+        try (BufferedReader in = new BufferedReader(new FileReader(this.fileName))) {
             String ln;
-            while( (ln = in.readLine()) !=null) {
-                colsCount = ln.split("\t").length; //FIXME
-                records.add(ln.split("\t"));
+            while ((ln = in.readLine()) != null) {
+                records.put(ln.split(",")[1], ln.split(",")[0]);
             }
         }
-    }
 
-    public void printNewCSV(){
-        try {
-            CSVReader reader = new CSVReader(new FileReader(newFileName));
-            reader.iterator();
-            String[] nextLine;
-            while ((nextLine = reader.readNext()) != null) {
-                // nextLine[] is an array of values from the line
-                System.out.println(nextLine[0]);
-            }
-        }catch (Exception e){
-            System.out.println("Произошла ошибка во время парсинга CSV\n");
-            e.printStackTrace();
-        }
-    }
+        //Set clm weight to List
+        List<String> listValuesWeight = new ArrayList<>(records.values());
+        Collections.sort(listValuesWeight);
+        Collections.reverse(listValuesWeight);
 
-    public void save() throws IOException{
-        try(BufferedWriter out = new BufferedWriter(new FileWriter(newFileName)))
-        {
-            for(String[] arr : records){
-                for (String s :arr) {
-                    out.write(s+"   ",8,4);
+        //Create List for list of ID
+        listID = new ArrayList<>();
+        for (int i = 0; i < listValuesWeight.size(); i++) {
+            for (Map.Entry<String, String> valueMap : records.entrySet()) {
+                if (valueMap.getValue().equals(listValuesWeight.get(i))) {
+                    //Check dublicate id
+                    if (!listID.contains(valueMap.getKey())) {
+                        listID.add(valueMap.getKey());
+                    }
                 }
-                out.write("\n");
             }
         }
+        System.out.println(listID);
+
     }
 
-    public void setSortDirection(int direction){
+
+
+
+
+    public void setSortDirection(int direction) {
         sortDirection = direction;
-    }
+    }*/
 
-    public void sortByCol(final int i){
 
-        //comparator by specific col
-        Comparator<String[]> comp = (a, b) -> {
-            //reverse result if DESC (sortDirection = -1)
-            return sortDirection * a[i].compareTo(b[i]);
-        };
 
-        records.sort(comp);
-    }
+
+
 
 }
 

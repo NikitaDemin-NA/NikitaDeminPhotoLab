@@ -20,31 +20,21 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "извлечь значения id из JSON файла",
-  "keyword": "Дано "
-});
-formatter.match({
-  "location": "steps.JSONSteps.addJSON()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "пропарсить и отсортировать CSV",
   "keyword": "Тогда "
 });
 formatter.match({
-  "location": "steps.CSVSteps.Test()"
+  "location": "steps.CSVSteps.CSVFile()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "testTest",
-  "keyword": "И "
+  "name": "извлечь значения id из JSON файла",
+  "keyword": "Дано "
 });
 formatter.match({
-  "location": "steps.JSONSteps.testTest()"
+  "location": "steps.CSVSteps.addJSON()"
 });
 formatter.result({
   "status": "passed"
