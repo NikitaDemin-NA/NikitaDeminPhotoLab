@@ -1,5 +1,7 @@
 package steps;
 
+import com.opencsv.CSVReader;
+
 import java.io.*;
 import java.util.*;
 
@@ -30,12 +32,18 @@ class CSVFile {
         }
     }
 
-    public void print(){
-        for(String[] arr : records){
-            for (String s:arr) {
-                System.out.print(s+"\t");
+    public void printNewCSV(){
+        try {
+            CSVReader reader = new CSVReader(new FileReader(newFileName));
+            reader.iterator();
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                // nextLine[] is an array of values from the line
+                System.out.println(nextLine[0]);
             }
-            System.out.println();
+        }catch (Exception e){
+            System.out.println("Произошла ошибка во время парсинга CSV\n");
+            e.printStackTrace();
         }
     }
 
