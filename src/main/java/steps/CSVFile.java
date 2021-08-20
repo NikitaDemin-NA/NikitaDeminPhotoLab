@@ -13,7 +13,7 @@ class CSVFile {
     private int sortDirection = SortASC; //1 for ASC, -1 for DESC
     String fileName;
 
-    private int colsCount=0;
+    private int colsCount;
 
     public CSVFile(String fileName) throws IOException{
         records = new ArrayList<>();
@@ -64,70 +64,7 @@ class CSVFile {
         records.sort(comp);
     }
 
-    public int getColsCount(){
-        return colsCount;
-    }
 }
 
 
 
-class SortCSV {
-    private static BufferedReader in;
-
-    private static String fileName;
-
-    public static void main(String args[]) throws IOException{
-
-        in = new BufferedReader(new InputStreamReader(System.in));
-        if (args.length<1){
-            //promt user for input file
-            System.out.println("Enter path to .CSV file: ");
-            fileName = in.readLine();
-        } else
-        {
-            fileName = args[0];
-        }
-
-        try {
-            CSVFile csv = new CSVFile(fileName);
-
-
-            csv.print();
-
-            int maxcol = csv.getColsCount();
-            System.out.println(
-                    String.format("Select sorting column (1-%d): [1] ",maxcol));
-
-            int sortCol = 1;
-            String res =in.readLine();
-
-            //if non-default
-            if (res.trim().length() != 0){
-                sortCol = Integer.parseInt(res);
-                if ((sortCol<1) || (sortCol >maxcol)){
-                    System.out.println("Incorect column number");
-                    System.exit(0);
-                }
-            }
-
-            String sortDirection = "1";
-            System.out.println("Select sort direction");
-            System.out.println("1. ASC");
-            System.out.println("2. DESC");
-            System.out.print("[1]:");
-            sortDirection = in.readLine();
-            if (sortDirection == "2")
-                csv.setSortDirection(csv.SortDESC);
-
-            csv.sortByCol(sortCol-1); //-1 map from 1:n to 0:n-1
-            csv.save();
-            System.out.println("Sorted and saved to file");
-            System.out.println("Would you like to see result before exit? (yes/no)[no]");
-            if (in.readLine().trim().equals("yes"))
-                csv.print();
-        } catch(IOException e) {
-            System.out.println("File doesn't exist");
-            System.exit(0);
-        }
-    }
-}

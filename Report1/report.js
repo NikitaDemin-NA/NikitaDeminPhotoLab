@@ -20,14 +20,13 @@ formatter.scenario({
   ]
 });
 formatter.step({
-  "name": "отсортировать CSV2",
-  "keyword": "И "
+  "name": "пропарсить и отсортировать CSV",
+  "keyword": "Тогда "
 });
 formatter.match({
-  "location": "steps.CSVSteps.Test2()"
+  "location": "steps.CSVSteps.Test()"
 });
 formatter.result({
-  "error_message": "java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.Comparable ([Ljava.lang.String; and java.lang.Comparable are in module java.base of loader \u0027bootstrap\u0027)\n\tat java.base/java.util.Collections$ReverseComparator.compare(Collections.java:5286)\n\tat java.base/java.util.TimSort.countRunAndMakeAscending(TimSort.java:355)\n\tat java.base/java.util.TimSort.sort(TimSort.java:220)\n\tat java.base/java.util.Arrays.sort(Arrays.java:1232)\n\tat java.base/java.util.List.sort(List.java:510)\n\tat steps.CSVSteps.Test2(CSVSteps.java:38)\n\tat ✽.отсортировать CSV2(file:///Users/andrei/IdeaProjects/NikitaDeminPhotoLab/src/main/resources/features/FirstStep.feature:11)\n",
-  "status": "failed"
+  "status": "passed"
 });
 });
