@@ -44,7 +44,7 @@ class CSVFile {
         {
             for(String[] arr : records){
                 for (String s :arr) {
-                    out.write(s+"", 0,7);
+                    out.write(s+"   ",8,4);
                 }
                 out.write("\n");
             }
